@@ -12,14 +12,16 @@ var config = {
 
 var game = new Phaser.Game(config);
 
-var peixinho;
+var peixe;
+var tubarao;
 
 function preload() {
     this.load.image('mar', 'assets/bg_azul-escuro.png');
     this.load.image('logo', 'assets/logo-inteli_branco.png');
-    this.load.image('peixe', 'assets/peixes/tartaruga.png');
+    this.load.image('peixe', 'assets/peixes/peixe_turquesa.png');
     this.load.image('coral', 'assets/coral.png');
     this.load.image('barco', 'assets/barco.png');
+    this.load.image('tubarao', 'assets/peixes/tubarao.png');
 }
 
 function create() {
@@ -28,14 +30,18 @@ function create() {
     this.add.image(450, 450, 'coral').setScale(0.5).setOrigin(0, 0.25);
     this.add.image(500, 500, 'barco').setScale(0.8).setOrigin(1.4, 0.5);
     
+    tubarao =  this.add.image(133, 126, 'tubarao')
+    peixe = this.add.image(400, 300, 'peixe').setOrigin(1, 1);
 
-    peixinho = this.add.image(400, 300, 'peixe').setOrigin(0.5, 0.5);
-
-    peixinho.setFlip(true, false);
+    tubarao.setFlip(true, false);
+    peixe.setFlip(true, false);
 }
 
 function update() {
     
-    peixinho.x = this.input.x;
-    peixinho.y = this.input.y;
+    peixe.x = this.input.x * 1.8;
+    peixe.y = this.input.y * 1.8;
+
+    tubarao.x = this.input.x;
+    tubarao.y = this.input.y;
 }
